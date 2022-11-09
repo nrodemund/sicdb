@@ -19,4 +19,4 @@ Example for getting raw MAP of heart surgery patients:
 
 Put data_float_h into the same folder and run unpack.py with python.
 
-The data is serialized for a good reason, expect this to run for a long time and create a massive csv file.
+The data is serialized for a good reason, expect this to run for a long time and create a massive csv file. As of Version 1.0.4 these are roughly 52 gb uncompressed.
