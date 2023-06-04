@@ -3,7 +3,7 @@
 # 1) Install software "docker" (www.docker.com)
 # 2) Use commandline to navigate in this folder, then run "docker compose up"
 # 3) On Windows (Docker Desktop) the container is now listed at "containers", it is called "roodataenv".
-# 4) After running, open http://localhost:5000" in browser
+# 4) After running, open http://localhost:5075" in browser
 
 # Please note: On Windows, using docker desktop, it is recommended to use the docker desktop application to start RooDataEnv again. 
 
@@ -32,7 +32,7 @@ services:
     image: phpmyadmin
     #restart: always
     ports:
-      - 127.0.0.1:4999:80
+      - 4999:80
     environment:
       #- PMA_ARBITRARY=1
       - PMA_HOST=db
@@ -42,10 +42,11 @@ services:
     image: roosystems/roodataserver
 
     ports:
-      - 127.0.0.1:5000:5000 
+      - 5075:5000 
     volumes:
       - '.:/DatasetSource'  # RooDataServer expects the source data being in same directory like docker-compose.yml
-      - sicdbdatabase:/app/Configuration.json'
+      #- './Configuration.json:/app/Configuration.json'  
+
     environment:
       - ROODATA_IS_CONTAINERIZED=yes
       - ASPNETCORE_ENVIRONMENT=DEVELOPMENT
@@ -54,5 +55,7 @@ services:
       - SUPPORT_URL=https://discord.gg/5bD4HyPUmy
 volumes:
   sicdbdatabase:
-    driver: local      
+    driver: local    
+  roodataserver:
+    driver: local
 #/DatasetSource/DatasetConfiguration.conf
