@@ -12,7 +12,7 @@ We provide a software solution, which helps you build up an indexed database, vi
 3) Install software "docker" (www.docker.com)
 4) Use commandline to navigate in the data folder folder, then run "docker compose up"
 5) On Windows (Docker Desktop) the container is now listed at "containers", it is called "roodataenv".
-6) After running, open http://localhost:5000" in browser
+6) After running, open http://localhost:5075" in browser
 
 Please note: On Windows, using docker desktop, it is recommended to use the docker desktop application to start RooDataEnv again. 
 
