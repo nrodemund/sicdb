@@ -1,4 +1,6 @@
 import csv, gzip, struct
+import os
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 def SetRawValues(row,dictwriter,n):
    t = int(row['Offset'])
