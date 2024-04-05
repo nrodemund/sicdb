@@ -5,8 +5,8 @@ from sqlalchemy.exc import SQLAlchemyError
 import glob
 import os
 
-# MySQL database connection string
-connection_string = 'mysql+mysqlconnector://your_user:your_password@localhost/your_database'
+# PostgreSQL database connection string
+connection_string = 'postgresql://user:password@localhost/your_database'
 
 # Create the engine
 engine = create_engine(connection_string)
@@ -57,7 +57,7 @@ for filepath in glob.glob(f'{directory}/*.csv.gz'):
             # Pandas does not set a primary key. For query time reasons this cannot be done at the end, so do it now
             if primary_key_set is False:
                 print(f"Setting primary key...")
-                conn.execute(text(f'ALTER TABLE {table_name} ADD PRIMARY KEY ({primary_key});'))
+                conn.execute(text(f'ALTER TABLE {table_name} ADD PRIMARY KEY ("{primary_key}");'))
                 conn.commit()
 
                 # Set the most important indices
@@ -65,7 +65,7 @@ for filepath in glob.glob(f'{directory}/*.csv.gz'):
                 for index in important_indices:
                     if index in chunk.columns and index != primary_key:
                         print(f"Setting {index} as index in {table_name}")
-                        conn.execute(text(f'ALTER TABLE {table_name} ADD INDEX ({index});'))
+                        conn.execute(text(f'CREATE INDEX ON {table_name} ("{index}");'))
                         conn.commit()
   
 
@@ -75,6 +75,7 @@ for filepath in glob.glob(f'{directory}/*.csv.gz'):
                 primary_key_set=True
 
             chunk_counter += 1
+            
             row_count=chunk_counter*chunk_size
             print(f"Processed chunk {chunk_counter} ({row_count} rows) for {table_name}")
 
