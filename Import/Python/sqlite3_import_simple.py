@@ -8,7 +8,7 @@ import os
 database_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'your_database.db')  # Update this to your SQLite database path
 
 # Directory where your .csv.gz files are located
-directory = r'D:\Export\sicdb\sicdb'#os.path.dirname(os.path.realpath(__file__))  # Replace with your directory if not in same path
+directory = os.path.dirname(os.path.realpath(__file__))  # Replace with your directory if not in same path
 
 # Check if cases.csv.gz exists in the directory
 if not glob.glob(f'{directory}/cases.csv.gz'):
