@@ -1,3 +1,13 @@
+###############################################################################
+# Note: This is the legacy (v1) Postgres importer. On Windows it has shown    #
+# instability, occasionally crashing with a native buffer overflow and        #
+# aborting the process at seemingly random points (including runs that may    #
+# succeed without changes).                                                   #
+#                                                                             #
+# Recommendation: Use v2 of this importer instead, which follows a more       #
+# modern approach and is intended to reduce the probability of this failure.  #
+###############################################################################
+
 
 import pandas as pd
 from sqlalchemy import create_engine,text
