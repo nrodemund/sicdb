@@ -1,15 +1,11 @@
 ###############################################################################
-# Note: The previous Postgres importer has proven unstable on Windows,        #
-# occasionally triggering a native buffer-overflow crash that aborts the      #
-# process. This may be related to psycopg2/SQLAlchemy; however, it may also   #
-# be an interaction with Windows Defender, as the failure point appears       #
-# completely random and runs may also succeed without changes. This version   #
-# of the importer uses a more modern approach, reducing the probability of    #
-# error.                                                                      #
-#                                                                             #
-# Disclaimer: I currently do not have the time to ground-develop this         #
-# version. It was created using gpt-5.2-reasoning and is provided without     #
-# warranty. Unit tests on database integrity have succeeded.                  #
+# Usage:                                                                      #
+# 1) Edit CONNECTION_STRING                                                   #
+# 2) Place .csv.gz files in the same directory as this script or set working  #
+#  directory to this folder                                                   #
+# 3) Run the script. It will create tables with the same name as the files,   #
+#    add primary keys, and create important indices.                          #
+# Note: No other indices or constraints will be created, set as needed.       #
 ###############################################################################
 
 
